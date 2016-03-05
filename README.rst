@@ -84,6 +84,9 @@ Play parameters
 Parameter            Description
 ===================  =======================================================================
 any_errors_fatal
+become               Boolean that indicates ansible should become another user for the play (e.g., ``True``).
+become_user          If using ``become``, user to become for executing tasks. Defaults: ``root``.
+become_method        If using ``become``, method to use for privilege escalation to the requested user (e.g., ``sudo``, ``su``, ``pbrun``, ``pfexec``, ``doas``)
 gather_facts         Specify whether to gather facts or not
 handlers             List of handlers
 hosts                Hosts in the play (e.g., ``webservers``).
@@ -99,10 +102,10 @@ remote_user          Alias for ``user``.
 role_names
 roles                List of roles.
 serial               Integer that indicates how many hosts Ansible should manage at a single
-su
-su_user
-sudo                 Boolean that indicates whether ansible should use sudo (e.g., ``True``).
-sudo_user            If sudo'ing, user to sudo as. Defaults: ``root``.
+su                   *[DEPRECATED]* Boolean that indicates ansible should use su to switch users (e.g., ``True``).
+su_user              *[DEPRECATED]* If su'ing, user to su to. Defaults: ``root``.
+sudo                 *[DEPRECATED]* Boolean that indicates whether ansible should use sudo (e.g., ``True``).
+sudo_user            *[DEPRECATED]* If sudo'ing, user to sudo as. Defaults: ``root``.
 tasks                List of tasks.
 user                 User to ssh as. Default: ``root`` (unless overridden in config file)
 no_log
@@ -127,8 +130,8 @@ delegate_to         Run task on specified host instead.
 local_action        Equivalent to: ``delegate_to: 127.0.0.1``.
 remote_user         Alias for ``user``.
 user                User to ssh as for this task
-sudo                Boolean that indicates whether ansible should use sudo on this task
-sudo_user           If sudo'ing, user to sudo as.
+sudo                *[DEPRECATED]* Boolean that indicates whether ansible should use sudo on this task
+sudo_user           *[DEPRECATED]* If sudo'ing, user to sudo as.
 when                Boolean. Only run task when this evaluates to True. Default: ``True``
 ignore_errors       Boolean. If True, ansible will treat task as if it has succeeded even if it returned an
                     error, Default: ``False``
